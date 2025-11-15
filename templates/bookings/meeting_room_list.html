@@ -1,0 +1,161 @@
+<!-- templates/bookings/meeting_room_list.html -->
+{% extends 'bookings/base_bookings.html' %}
+
+{% block title %}会议室管理 - 会议室预约系统{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 mb-0">
+        <i class="fas fa-door-open me-2"></i>会议室管理
+    </h2>
+    {% if is_company_admin %}
+    <a href="{% url 'bookings:meeting_room_create' %}" class="btn btn-primary btn-sm">
+        <i class="fas fa-plus me-1"></i>新增会议室
+    </a>
+    {% endif %}
+</div>
+
+<!-- 搜索和筛选卡片 -->
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="card-title mb-0">
+            <i class="fas fa-search me-2"></i>搜索和筛选
+        </h5>
+    </div>
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">搜索会议室</label>
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control"
+                           placeholder="搜索会议室名称、位置或备注..."
+                           value="{{ search_query }}">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">可用状态</label>
+                <select name="availability" class="form-control">
+                    <option value="">所有状态</option>
+                    <option value="available" {% if availability_filter == 'available' %}selected{% endif %}>可用</option>
+                    <option value="unavailable" {% if availability_filter == 'unavailable' %}selected{% endif %}>不可用</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <div>
+                    <a href="{% url 'bookings:meeting_room_list' %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-redo me-1"></i>重置
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 会议室列表 -->
+<div class="row">
+    {% for room in meeting_rooms %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card booking-card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">{{ room.name }}</h5>
+                <span class="badge {% if room.is_available %}bg-success{% else %}bg-danger{% endif %} status-badge">
+                    {% if room.is_available %}可用{% else %}不可用{% endif %}
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="mb-2">
+                    <i class="fas fa-map-marker-alt text-muted me-2"></i>
+                    <span class="text-muted">{{ room.location }}</span>
+                </div>
+                <div class="mb-2">
+                    <i class="fas fa-users text-muted me-2"></i>
+                    <span class="text-muted">容量: {{ room.capacity }} 人</span>
+                </div>
+                {% if room.remarks %}
+                <div class="mb-3">
+                    <small class="text-muted">{{ room.remarks|truncatewords:10 }}</small>
+                </div>
+                {% endif %}
+                <div class="text-muted small">
+                    创建: {{ room.created_at|date:"Y-m-d" }}
+                </div>
+            </div>
+            <div class="card-footer bg-transparent">
+                <div class="btn-group w-100">
+                    <a href="{% url 'bookings:reservation_create' %}?meeting_room={{ room.id }}"
+                       class="btn btn-outline-primary btn-sm" {% if not room.is_available %}disabled{% endif %}>
+                        <i class="fas fa-calendar-plus me-1"></i>预约
+                    </a>
+                    {% if is_company_admin %}
+                    <a href="{% url 'bookings:meeting_room_update' room.pk %}"
+                       class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form method="post" action="{% url 'bookings:meeting_room_toggle_availability' room.pk %}"
+                          class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-warning btn-sm"
+                                title="{% if room.is_available %}禁用{% else %}启用{% endif %}">
+                            <i class="fas {% if room.is_available %}fa-ban{% else %}fa-check{% endif %}"></i>
+                        </button>
+                    </form>
+                    <a href="{% url 'bookings:meeting_room_delete' room.pk %}"
+                       class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="text-center py-5 text-muted">
+            <i class="fas fa-door-closed fa-3x mb-3"></i>
+            <h5>暂无会议室</h5>
+            <p>还没有创建任何会议室</p>
+            {% if is_company_admin %}
+            <a href="{% url 'bookings:meeting_room_create' %}" class="btn btn-primary">
+                <i class="fas fa-plus me-1"></i>创建第一个会议室
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- 分页 -->
+{% if is_paginated %}
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">上一页</a>
+        </li>
+        {% endif %}
+
+        {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+            <li class="page-item active">
+                <span class="page-link">{{ i }}</span>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ i }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">下一页</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}

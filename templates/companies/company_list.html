@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}公司管理 - 会议室预约系统{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 mb-0">
+        <i class="fas fa-building me-2"></i>公司管理
+    </h2>
+    <div class="btn-group">
+        <a href="{% url 'companies:company_create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus me-1"></i>新增公司
+        </a>
+        <a href="{% url 'companies:company_statistics' %}" class="btn btn-outline-secondary btn-sm">
+            <i class="fas fa-chart-bar me-1"></i>统计报表
+        </a>
+    </div>
+</div>
+
+<!-- 搜索和筛选卡片 -->
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="card-title mb-0">
+            <i class="fas fa-search me-2"></i>搜索和筛选
+        </h5>
+    </div>
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">{{ search_form.search_by.label }}</label>
+                {{ search_form.search_by }}
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">{{ search_form.keyword.label }}</label>
+                {{ search_form.keyword }}
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">{{ search_form.status.label }}</label>
+                {{ search_form.status }}
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">{{ search_form.created_after.label }}</label>
+                {{ search_form.created_after }}
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">{{ search_form.created_before.label }}</label>
+                {{ search_form.created_before }}
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search me-1"></i>搜索
+                </button>
+                <a href="{% url 'companies:company_list' %}" class="btn btn-outline-secondary">
+                    <i class="fas fa-redo me-1"></i>重置
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 批量操作卡片 -->
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="card-title mb-0">
+            <i class="fas fa-cogs me-2"></i>批量操作
+        </h5>
+    </div>
+    <div class="card-body">
+        <form method="post" action="{% url 'companies:company_bulk_action' %}" id="bulkActionForm">
+            {% csrf_token %}
+            <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                    <label class="form-label">{{ bulk_action_form.action.label }}</label>
+                    {{ bulk_action_form.action }}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">{{ bulk_action_form.companies.label }}</label>
+                    {{ bulk_action_form.companies }}
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-warning w-100">
+                        <i class="fas fa-play me-1"></i>执行操作
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 公司列表卡片 -->
+<div class="card">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">公司列表</h5>
+        <span class="badge bg-primary">共 {{ companies.paginator.count }} 家公司</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th width="30"><input type="checkbox" id="selectAll"></th>
+                        <th>公司名称</th>
+                        <th>管理员</th>
+                        <th>用户数量</th>
+                        <th>会议室数量</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                        <th width="150">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for company in companies %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="companies" value="{{ company.id }}" class="company-checkbox">
+                        </td>
+                        <td>
+                            <strong>{{ company.name }}</strong>
+                        </td>
+                        <td>
+                            {{ company.admin.get_full_name|default:company.admin.username }}
+                            <small class="text-muted d-block">{{ company.admin.email }}</small>
+                        </td>
+                        <td>
+                            <span class="badge bg-info">{{ company.user_count }}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary">{{ company.room_count }}</span>
+                        </td>
+                        <td>{{ company.created_at|date:"Y-m-d H:i" }}</td>
+                        <td>
+                            {% if company.is_active %}
+                                <span class="badge bg-success">活跃</span>
+                            {% else %}
+                                <span class="badge bg-danger">禁用</span>
+                            {% endif %}
+                        </td>
+                        <td class="table-actions">
+                            <div class="btn-group btn-group-sm">
+                                <a href="{% url 'companies:company_detail' company.pk %}" class="btn btn-outline-info" title="查看">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{% url 'companies:company_update' company.pk %}" class="btn btn-outline-primary" title="编辑">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                {% if company.is_active %}
+                                    <form method="post" action="{% url 'companies:company_deactivate' company.pk %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-outline-warning" title="禁用" onclick="return confirm('确定要禁用该公司吗？')">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <form method="post" action="{% url 'companies:company_activate' company.pk %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-outline-success" title="激活" onclick="return confirm('确定要激活该公司吗？')">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </form>
+                                {% endif %}
+                                <a href="{% url 'companies:company_delete' company.pk %}" class="btn btn-outline-danger" title="删除" onclick="return confirm('确定要删除该公司吗？此操作不可恢复！')">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center py-4 text-muted">
+                            <i class="fas fa-inbox fa-2x mb-3"></i><br>
+                            暂无公司数据
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- 分页 -->
+    {% if companies.has_other_pages %}
+    <div class="card-footer">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center mb-0">
+                {% if companies.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ companies.previous_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">上一页</a>
+                </li>
+                {% endif %}
+
+                {% for i in companies.paginator.page_range %}
+                    {% if companies.number == i %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ i }}</span>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ i }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if companies.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ companies.next_page_number }}{% for key,value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">下一页</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 全选/全不选功能
+document.getElementById('selectAll').addEventListener('change', function() {
+    const checkboxes = document.getElementsByClassName('company-checkbox');
+    for (let checkbox of checkboxes) {
+        checkbox.checked = this.checked;
+    }
+});
+
+// 批量操作表单验证
+document.getElementById('bulkActionForm').addEventListener('submit', function(e) {
+    const selectedCompanies = document.querySelectorAll('.company-checkbox:checked');
+    if (selectedCompanies.length === 0) {
+        e.preventDefault();
+        alert('请至少选择一家公司进行操作');
+        return false;
+    }
+});
+</script>
+{% endblock %}

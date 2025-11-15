@@ -1,0 +1,42 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}登录 - 会议室预约系统{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="form-card">
+            <h2 class="text-center mb-4">用户登录</h2>
+
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                用户名或密码错误，请重试。
+            </div>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">用户名</label>
+                    <input type="text" name="username" class="form-control" id="id_username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">密码</label>
+                    <input type="password" name="password" class="form-control" id="id_password" required>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">登录</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <p>还没有账户？<a href="{% url 'accounts:register' %}">立即注册</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

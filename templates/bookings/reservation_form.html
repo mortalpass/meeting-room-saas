@@ -1,0 +1,226 @@
+<!-- templates/bookings/reservation_form.html -->
+{% extends 'bookings/base_bookings.html' %}
+
+{% block title %}{{ title }} - 会议室预约系统{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="form-card">
+            <h3 class="mb-4">
+                <i class="fas fa-calendar-plus me-2"></i>{{ title }}
+            </h3>
+
+            <form method="post" novalidate id="reservationForm">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="row g-3">
+                    <!-- 会议室 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.meeting_room.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.meeting_room }}
+                        {% if form.meeting_room.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.meeting_room.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 会议主题 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.title.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.title }}
+                        {% if form.title.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.title.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 开始时间 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.start_time.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.start_time }}
+                        {% if form.start_time.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.start_time.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 结束时间 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.end_time.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.end_time }}
+                        {% if form.end_time.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.end_time.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 参与人数 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.participant_count.label }}
+                        </label>
+                        {{ form.participant_count }}
+                        {% if form.participant_count.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.participant_count.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if form.participant_count.help_text %}
+                        <div class="form-text">{{ form.participant_count.help_text }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 参会人员 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.participants.label }}
+                        </label>
+                        {{ form.participants }}
+                        {% if form.participants.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.participants.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 会议描述 -->
+                    <div class="col-12">
+                        <label class="form-label">
+                            {{ form.description.label }}
+                        </label>
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.description.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 备注 -->
+                    <div class="col-12">
+                        <label class="form-label">
+                            {{ form.remarks.label }}
+                        </label>
+                        {{ form.remarks }}
+                        {% if form.remarks.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.remarks.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- 时间冲突提示 -->
+                <div id="timeConflictAlert" class="alert alert-warning mt-3 d-none">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <span id="conflictMessage">该时间段可能存在冲突</span>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'bookings:reservation_list' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i>返回列表
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>保存预约
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 实时检查时间冲突
+function checkTimeConflict() {
+    const meetingRoom = document.getElementById('id_meeting_room').value;
+    const startTime = document.getElementById('id_start_time').value;
+    const endTime = document.getElementById('id_end_time').value;
+    const reservationId = {% if reservation.pk %}{{ reservation.pk }}{% else %}null{% endif %};
+
+    if (meetingRoom && startTime && endTime) {
+        const url = `{% url 'bookings:api_check_time_conflict' %}?meeting_room=${meetingRoom}&start_time=${startTime}&end_time=${endTime}`;
+        if (reservationId) {
+            url += `&reservation_id=${reservationId}`;
+        }
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const conflictAlert = document.getElementById('timeConflictAlert');
+                const conflictMessage = document.getElementById('conflictMessage');
+
+                if (data.is_conflicting) {
+                    conflictMessage.textContent = `该时间段存在 ${data.conflicting_count} 个冲突预约`;
+                    conflictAlert.classList.remove('d-none');
+                } else {
+                    conflictAlert.classList.add('d-none');
+                }
+            })
+            .catch(error => {
+                console.error('Error checking time conflict:', error);
+            });
+    }
+}
+
+// 添加事件监听器
+document.addEventListener('DOMContentLoaded', function() {
+    const meetingRoomField = document.getElementById('id_meeting_room');
+    const startTimeField = document.getElementById('id_start_time');
+    const endTimeField = document.getElementById('id_end_time');
+
+    if (meetingRoomField) meetingRoomField.addEventListener('change', checkTimeConflict);
+    if (startTimeField) startTimeField.addEventListener('change', checkTimeConflict);
+    if (endTimeField) endTimeField.addEventListener('change', checkTimeConflict);
+
+    // 初始检查
+    checkTimeConflict();
+});
+</script>
+{% endblock %}

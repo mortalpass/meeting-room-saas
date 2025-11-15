@@ -1,0 +1,176 @@
+<!-- templates/bookings/dashboard.html -->
+{% extends 'bookings/base_bookings.html' %}
+
+{% block title %}会议室预约系统 - 仪表板{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 mb-0">
+        <i class="fas fa-tachometer-alt me-2"></i>预约系统仪表板
+    </h2>
+    <div class="btn-group">
+        <a href="{% url 'bookings:reservation_create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus me-1"></i>新建预约
+        </a>
+        <a href="{% url 'bookings:quick_reservation' %}" class="btn btn-outline-primary btn-sm">
+            <i class="fas fa-bolt me-1"></i>快速预约
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- 今日预约 -->
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-calendar-day me-2"></i>今日预约 ({{ today|date:"Y-m-d" }})
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if today_reservations %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>时间</th>
+                                <th>会议室</th>
+                                <th>主题</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reservation in today_reservations %}
+                            <tr>
+                                <td>
+                                    <small>{{ reservation.start_time|date:"H:i" }} - {{ reservation.end_time|date:"H:i" }}</small>
+                                </td>
+                                <td>{{ reservation.meeting_room.name }}</td>
+                                <td>
+                                    <a href="{% url 'bookings:reservation_detail' reservation.pk %}">
+                                        {{ reservation.title }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {% if reservation.status == 'pending' %}
+                                        <span class="badge bg-warning">待确认</span>
+                                    {% elif reservation.status == 'confirmed' %}
+                                        <span class="badge bg-success">已确认</span>
+                                    {% elif reservation.status == 'in_use' %}
+                                        <span class="badge bg-info">使用中</span>
+                                    {% elif reservation.status == 'completed' %}
+                                        <span class="badge bg-secondary">已完成</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-4 text-muted">
+                    <i class="fas fa-calendar-times fa-2x mb-3"></i>
+                    <p>今日暂无预约</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 侧边栏信息 -->
+    <div class="col-lg-4">
+        <!-- 即将开始的预约 -->
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-clock me-2"></i>即将开始
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if upcoming_reservations %}
+                <div class="list-group list-group-flush">
+                    {% for reservation in upcoming_reservations %}
+                    <div class="list-group-item px-0">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ reservation.title }}</h6>
+                            <small>{{ reservation.start_time|date:"H:i" }}</small>
+                        </div>
+                        <p class="mb-1 small text-muted">{{ reservation.meeting_room.name }}</p>
+                        <small class="text-muted">
+                            {% if reservation.status == 'pending' %}
+                                <span class="badge bg-warning">待确认</span>
+                            {% else %}
+                                <span class="badge bg-success">已确认</span>
+                            {% endif %}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-3 text-muted">
+                    <i class="fas fa-clock fa-2x mb-2"></i>
+                    <p>暂无即将开始的预约</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- 待处理预约（管理员） -->
+        {% if is_company_admin and pending_reservations %}
+        <div class="card mb-4">
+            <div class="card-header bg-warning text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-exclamation-circle me-2"></i>待处理预约
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group list-group-flush">
+                    {% for reservation in pending_reservations %}
+                    <div class="list-group-item px-0">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ reservation.title }}</h6>
+                            <small>{{ reservation.start_time|date:"m-d H:i" }}</small>
+                        </div>
+                        <p class="mb-1 small text-muted">{{ reservation.meeting_room.name }}</p>
+                        <div class="btn-group btn-group-sm">
+                            <a href="{% url 'bookings:reservation_detail' reservation.pk %}"
+                               class="btn btn-outline-primary btn-sm">查看</a>
+                            <a href="{% url 'bookings:reservation_status_update' reservation.pk %}"
+                               class="btn btn-outline-success btn-sm">处理</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- 快速操作 -->
+        <div class="card">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-rocket me-2"></i>快速操作
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{% url 'bookings:reservation_create' %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-1"></i>新建预约
+                    </a>
+                    <a href="{% url 'bookings:meeting_room_list' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-door-open me-1"></i>查看会议室
+                    </a>
+                    <a href="{% url 'bookings:reservation_calendar' %}" class="btn btn-outline-info">
+                        <i class="fas fa-calendar me-1"></i>日历视图
+                    </a>
+                    {% if is_company_admin %}
+                    <a href="{% url 'bookings:reservation_config' %}" class="btn btn-outline-warning">
+                        <i class="fas fa-cog me-1"></i>系统配置
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!-- templates/bookings/base_bookings.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .booking-card {
+        transition: all 0.3s ease;
+    }
+    .booking-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .status-badge {
+        font-size: 0.75rem;
+    }
+    .calendar-day {
+        min-height: 120px;
+        border: 1px solid #dee2e6;
+    }
+    .calendar-day.today {
+        background-color: #e7f3ff;
+    }
+    .calendar-day.weekend {
+        background-color: #f8f9fa;
+    }
+    .reservation-item {
+        font-size: 0.8rem;
+        margin-bottom: 2px;
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+</style>
+{% endblock %}

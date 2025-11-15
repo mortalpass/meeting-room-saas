@@ -1,0 +1,365 @@
+INFO 2025-10-25 15:32:46,796 autoreload 2419 140704574281280 Watching for file changes with StatReloader
+INFO 2025-10-25 15:36:45,251 autoreload 2419 140704574281280 /Users/sw-team/Desktop/meeting-space-saas/manage.py changed, reloading.
+INFO 2025-10-25 15:39:07,103 autoreload 2456 140704574281280 Watching for file changes with StatReloader
+INFO 2025-10-27 16:44:27,813 autoreload 2930 140704725984832 Watching for file changes with StatReloader
+INFO 2025-10-27 16:46:41,396 autoreload 2930 140704725984832 /Users/sw-team/Desktop/meeting-space-saas/apps/accounts/apps.py changed, reloading.
+INFO 2025-10-27 16:46:41,713 autoreload 2959 140704725984832 Watching for file changes with StatReloader
+INFO 2025-10-27 16:48:29,990 autoreload 2959 140704725984832 /Users/sw-team/Desktop/meeting-space-saas/config/settings.py changed, reloading.
+INFO 2025-10-27 16:48:30,303 autoreload 2979 140704725984832 Watching for file changes with StatReloader
+INFO 2025-10-27 16:49:21,004 autoreload 2979 140704725984832 /Users/sw-team/Desktop/meeting-space-saas/config/settings.py changed, reloading.
+INFO 2025-10-27 16:49:21,311 autoreload 2994 140704725984832 Watching for file changes with StatReloader
+INFO 2025-10-27 16:51:21,718 autoreload 2994 140704725984832 /Users/sw-team/Desktop/meeting-space-saas/config/settings.py changed, reloading.
+INFO 2025-10-28 14:15:18,921 autoreload 2081 140704414914112 Watching for file changes with StatReloader
+INFO 2025-10-28 14:16:11,670 autoreload 2081 140704414914112 /Users/sw-team/Desktop/meeting-space-saas/config/settings.py changed, reloading.
+INFO 2025-10-28 14:16:11,971 autoreload 2089 140704414914112 Watching for file changes with StatReloader
+INFO 2025-10-28 14:16:24,285 autoreload 2089 140704414914112 /Users/sw-team/Desktop/meeting-space-saas/config/settings.py changed, reloading.
+INFO 2025-10-28 14:16:24,595 autoreload 2091 140704414914112 Watching for file changes with StatReloader
+INFO 2025-10-29 09:10:19,888 autoreload 1223 140704605980224 Watching for file changes with StatReloader
+INFO 2025-11-07 16:51:24,559 autoreload 2527 140704663365184 Watching for file changes with StatReloader
+INFO 2025-11-07 16:57:48,790 autoreload 2527 140704663365184 /Users/sw-team/Desktop/meeting-space-saas/apps/accounts/apps.py changed, reloading.
+INFO 2025-11-07 16:57:49,101 autoreload 2642 140704663365184 Watching for file changes with StatReloader
+INFO 2025-11-07 16:58:21,591 autoreload 2642 140704663365184 /Users/sw-team/Desktop/meeting-space-saas/apps/bookings/apps.py changed, reloading.
+INFO 2025-11-07 16:58:21,962 autoreload 2654 140704663365184 Watching for file changes with StatReloader
+INFO 2025-11-08 09:57:33,073 autoreload 1566 140704467564096 Watching for file changes with StatReloader
+INFO 2025-11-08 09:58:51,727 autoreload 1588 140704467564096 Watching for file changes with StatReloader
+INFO 2025-11-08 10:01:11,454 autoreload 1588 140704467564096 /Users/sw-team/Desktop/meeting-space-saas/apps/bookings/apps.py changed, reloading.
+INFO 2025-11-08 10:01:11,837 autoreload 1604 140704467564096 Watching for file changes with StatReloader
+INFO 2025-11-08 10:01:19,090 autoreload 1604 140704467564096 /Users/sw-team/Desktop/meeting-space-saas/apps/bookings/apps.py changed, reloading.
+INFO 2025-11-08 10:01:19,464 autoreload 1608 140704467564096 Watching for file changes with StatReloader
+INFO 2025-11-08 10:14:23,887 autoreload 1682 140704467564096 Watching for file changes with StatReloader
+INFO 2025-11-08 10:16:18,448 autoreload 1682 140704467564096 /Users/sw-team/Desktop/meeting-space-saas/apps/bookings/models.py changed, reloading.
+INFO 2025-11-08 10:16:18,830 autoreload 1694 140704467564096 Watching for file changes with StatReloader
+INFO 2025-11-08 11:31:08,633 autoreload 1983 140704467564096 Watching for file changes with StatReloader
+INFO 2025-11-10 09:13:30,662 autoreload 1206 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 09:59:42,843 autoreload 1537 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 09:59:45,612 basehttp 1537 123145523585024 "GET / HTTP/1.1" 302 0
+ERROR 2025-11-10 09:59:45,680 log 1537 123145523585024 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'dashboard' not found. 'dashboard' is not a valid view function or pattern name.
+ERROR 2025-11-10 09:59:45,690 basehttp 1537 123145523585024 "GET /login/?next=/ HTTP/1.1" 500 136198
+WARNING 2025-11-10 09:59:45,841 log 1537 123145523585024 Not Found: /favicon.ico
+WARNING 2025-11-10 09:59:45,842 basehttp 1537 123145523585024 "GET /favicon.ico HTTP/1.1" 404 6814
+INFO 2025-11-10 14:34:14,323 autoreload 2507 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 14:34:18,098 basehttp 2507 123145531125760 "GET / HTTP/1.1" 302 0
+ERROR 2025-11-10 14:34:18,170 log 2507 123145531125760 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'dashboard' not found. 'dashboard' is not a valid view function or pattern name.
+ERROR 2025-11-10 14:34:18,188 basehttp 2507 123145531125760 "GET /login/?next=/ HTTP/1.1" 500 136198
+WARNING 2025-11-10 14:34:18,337 log 2507 123145531125760 Not Found: /favicon.ico
+WARNING 2025-11-10 14:34:18,337 basehttp 2507 123145531125760 "GET /favicon.ico HTTP/1.1" 404 6814
+INFO 2025-11-10 14:43:42,863 autoreload 2507 140704586987072 /Users/sw-team/Desktop/meeting-space-saas/config/settings.py changed, reloading.
+INFO 2025-11-10 14:43:43,294 autoreload 2568 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 14:43:49,786 basehttp 2568 123145395793920 "GET / HTTP/1.1" 302 0
+ERROR 2025-11-10 14:43:49,856 log 2568 123145395793920 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'dashboard' not found. 'dashboard' is not a valid view function or pattern name.
+ERROR 2025-11-10 14:43:49,869 basehttp 2568 123145395793920 "GET /login/?next=/ HTTP/1.1" 500 136181
+INFO 2025-11-10 15:29:45,364 autoreload 2568 140704586987072 /Users/sw-team/Desktop/meeting-space-saas/config/urls.py changed, reloading.
+INFO 2025-11-10 15:29:45,778 autoreload 2751 140704586987072 Watching for file changes with StatReloader
+WARNING 2025-11-10 15:29:46,908 log 2751 123145455656960 Not Found: /
+WARNING 2025-11-10 15:29:46,908 basehttp 2751 123145455656960 "GET / HTTP/1.1" 404 3090
+INFO 2025-11-10 15:29:56,584 basehttp 2751 123145455656960 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-10 15:29:56,613 basehttp 2751 123145455656960 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4195
+INFO 2025-11-10 15:29:56,625 basehttp 2751 123145455656960 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-11-10 15:29:56,627 basehttp 2751 123145472446464 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-11-10 15:29:56,627 basehttp 2751 123145489235968 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-11-10 15:29:56,627 basehttp 2751 123145522814976 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-11-10 15:29:56,627 basehttp 2751 123145506025472 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-11-10 15:29:56,628 basehttp 2751 123145539604480 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-11-10 15:29:56,630 basehttp 2751 123145489235968 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+WARNING 2025-11-10 15:30:21,880 log 2751 123145489235968 Not Found: /accounts
+WARNING 2025-11-10 15:30:21,881 basehttp 2751 123145489235968 "GET /accounts HTTP/1.1" 404 3132
+WARNING 2025-11-10 15:30:26,928 log 2751 123145489235968 Not Found: /accounts/
+WARNING 2025-11-10 15:30:26,929 basehttp 2751 123145489235968 "GET /accounts/ HTTP/1.1" 404 5397
+WARNING 2025-11-10 15:30:46,283 log 2751 123145489235968 Not Found: /
+WARNING 2025-11-10 15:30:46,284 basehttp 2751 123145489235968 "GET / HTTP/1.1" 404 3090
+INFO 2025-11-10 15:30:54,918 autoreload 2751 140704586987072 /Users/sw-team/Desktop/meeting-space-saas/config/urls.py changed, reloading.
+INFO 2025-11-10 15:30:55,345 autoreload 2770 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 15:30:58,641 basehttp 2770 123145447104512 "GET / HTTP/1.1" 302 0
+ERROR 2025-11-10 15:30:58,711 log 2770 123145447104512 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'dashboard' not found. 'dashboard' is not a valid view function or pattern name.
+ERROR 2025-11-10 15:30:58,721 basehttp 2770 123145447104512 "GET /login/?next=/ HTTP/1.1" 500 136181
+INFO 2025-11-10 16:24:28,942 autoreload 3050 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 16:24:30,219 basehttp 3050 123145594032128 "GET / HTTP/1.1" 302 0
+INFO 2025-11-10 16:24:30,228 basehttp 3050 123145594032128 "GET /login/?next=/ HTTP/1.1" 200 3568
+INFO 2025-11-10 16:24:42,686 basehttp 3050 123145594032128 "GET /accounts/register/ HTTP/1.1" 200 6805
+INFO 2025-11-10 16:24:53,730 basehttp 3050 123145594032128 "GET /login/?next=/ HTTP/1.1" 200 3568
+INFO 2025-11-10 17:16:17,201 autoreload 3238 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 17:16:18,470 basehttp 3238 123145354076160 "GET / HTTP/1.1" 302 0
+INFO 2025-11-10 17:16:18,480 basehttp 3238 123145354076160 "GET /login/?next=/ HTTP/1.1" 200 3568
+INFO 2025-11-10 17:16:22,924 basehttp 3238 123145354076160 "GET /accounts/register/ HTTP/1.1" 200 6805
+INFO 2025-11-10 17:16:27,113 basehttp 3238 123145354076160 "POST /accounts/register/ HTTP/1.1" 200 7805
+INFO 2025-11-10 17:16:58,522 basehttp 3238 123145354076160 "POST /accounts/register/ HTTP/1.1" 200 7413
+INFO 2025-11-10 17:17:16,128 basehttp 3238 123145354076160 "POST /accounts/register/ HTTP/1.1" 200 7177
+INFO 2025-11-10 17:17:25,775 basehttp 3238 123145354076160 "POST /accounts/register/ HTTP/1.1" 200 7087
+INFO 2025-11-10 17:17:39,464 basehttp 3238 123145354076160 "POST /accounts/register/ HTTP/1.1" 200 7087
+INFO 2025-11-10 17:18:13,191 basehttp 3238 123145354076160 "POST /accounts/register/ HTTP/1.1" 200 7337
+ERROR 2025-11-10 17:18:26,496 log 3238 123145354076160 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: accounts_user_profile.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/apps/accounts/views.py", line 29, in register
+    user = form.save()
+  File "/Users/sw-team/Desktop/meeting-space-saas/apps/accounts/forms.py", line 117, in save
+    UserProfile.objects.create(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: accounts_user_profile.user_id
+ERROR 2025-11-10 17:18:26,513 basehttp 3238 123145354076160 "POST /accounts/register/ HTTP/1.1" 500 157111
+INFO 2025-11-10 17:48:25,445 autoreload 3238 140704586987072 /Users/sw-team/Desktop/meeting-space-saas/apps/accounts/models.py changed, reloading.
+INFO 2025-11-10 17:48:25,859 autoreload 3375 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 17:49:29,888 autoreload 3375 140704586987072 /Users/sw-team/Desktop/meeting-space-saas/apps/accounts/models.py changed, reloading.
+INFO 2025-11-10 17:49:30,306 autoreload 3392 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 17:57:24,522 autoreload 3475 140704586987072 Watching for file changes with StatReloader
+INFO 2025-11-10 17:57:25,815 basehttp 3475 123145474228224 "GET / HTTP/1.1" 302 0
+INFO 2025-11-10 17:57:25,826 basehttp 3475 123145474228224 "GET /login/?next=/ HTTP/1.1" 200 3568
+INFO 2025-11-10 17:57:28,633 basehttp 3475 123145474228224 "GET /accounts/register/ HTTP/1.1" 200 5668
+INFO 2025-11-10 18:00:42,548 basehttp 3475 123145474228224 "POST /accounts/register/ HTTP/1.1" 200 6418
+INFO 2025-11-11 09:20:01,815 autoreload 1218 140704697972288 Watching for file changes with StatReloader
+INFO 2025-11-11 09:20:37,530 basehttp 1218 123145376030720 "GET / HTTP/1.1" 302 0
+INFO 2025-11-11 09:20:37,543 basehttp 1218 123145376030720 "GET /login/?next=/ HTTP/1.1" 200 3568
+WARNING 2025-11-11 09:20:37,678 log 1218 123145376030720 Not Found: /favicon.ico
+WARNING 2025-11-11 09:20:37,679 basehttp 1218 123145376030720 "GET /favicon.ico HTTP/1.1" 404 3158
+INFO 2025-11-11 09:20:43,475 basehttp 1218 123145376030720 "GET / HTTP/1.1" 302 0
+INFO 2025-11-11 09:20:43,481 basehttp 1218 123145376030720 "GET /login/?next=/ HTTP/1.1" 200 3568
+INFO 2025-11-11 09:20:46,929 basehttp 1218 123145376030720 "GET /accounts/register/ HTTP/1.1" 200 5668
+INFO 2025-11-11 09:20:51,391 basehttp 1218 123145376030720 "GET /login/ HTTP/1.1" 200 3568
+INFO 2025-11-11 09:20:53,319 basehttp 1218 123145376030720 "GET /accounts/register/ HTTP/1.1" 200 5668
+INFO 2025-11-11 09:21:45,091 basehttp 1218 123145376030720 "POST /accounts/register/ HTTP/1.1" 200 5942
+ERROR 2025-11-11 09:22:04,566 log 1218 123145376030720 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: accounts_user_profile.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/apps/accounts/views.py", line 39, in register
+    UserProfile.objects.create(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/sw-team/Desktop/meeting-space-saas/env/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: accounts_user_profile.user_id
+ERROR 2025-11-11 09:22:04,584 basehttp 1218 123145376030720 "POST /accounts/register/ HTTP/1.1" 500 152331

@@ -1,0 +1,107 @@
+<!-- templates/bookings/quick_reservation.html -->
+{% extends 'bookings/base_bookings.html' %}
+
+{% block title %}快速预约 - 会议室预约系统{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="form-card">
+            <h3 class="mb-4">
+                <i class="fas fa-bolt me-2"></i>快速预约
+            </h3>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="row g-3">
+                    <!-- 会议室 -->
+                    <div class="col-12">
+                        <label class="form-label">
+                            {{ form.meeting_room.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.meeting_room }}
+                        {% if form.meeting_room.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.meeting_room.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 会议主题 -->
+                    <div class="col-12">
+                        <label class="form-label">
+                            {{ form.title.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.title }}
+                        {% if form.title.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.title.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 开始时间 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.start_time.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.start_time }}
+                        {% if form.start_time.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.start_time.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 时长 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.duration.label }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.duration }}
+                        {% if form.duration.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.duration.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'bookings:reservation_list' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i>返回列表
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-bolt me-1"></i>快速预约
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

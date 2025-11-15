@@ -1,0 +1,129 @@
+<!-- templates/bookings/meeting_room_form.html -->
+{% extends 'bookings/base_bookings.html' %}
+
+{% block title %}{{ title }} - 会议室预约系统{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="form-card">
+            <h3 class="mb-4">
+                <i class="fas fa-door-open me-2"></i>{{ title }}
+            </h3>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="row g-3">
+                    <!-- 会议室名称 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.name.label }}
+                            {% if form.name.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 容量 -->
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            {{ form.capacity.label }}
+                            {% if form.capacity.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        {{ form.capacity }}
+                        {% if form.capacity.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.capacity.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if form.capacity.help_text %}
+                        <div class="form-text">{{ form.capacity.help_text }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 位置 -->
+                    <div class="col-12">
+                        <label class="form-label">
+                            {{ form.location.label }}
+                            {% if form.location.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        {{ form.location }}
+                        {% if form.location.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.location.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if form.location.help_text %}
+                        <div class="form-text">{{ form.location.help_text }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 备注 -->
+                    <div class="col-12">
+                        <label class="form-label">
+                            {{ form.remarks.label }}
+                        </label>
+                        {{ form.remarks }}
+                        {% if form.remarks.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.remarks.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- 可用状态 -->
+                    <div class="col-12">
+                        <div class="form-check form-switch">
+                            {{ form.is_available }}
+                            <label class="form-check-label">
+                                {{ form.is_available.label }}
+                            </label>
+                        </div>
+                        {% if form.is_available.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.is_available.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'bookings:meeting_room_list' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-1"></i>返回列表
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>保存
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
