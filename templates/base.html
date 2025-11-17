@@ -31,6 +31,7 @@
             white-space: nowrap;
         }
 
+
     </style>
 
     {% block extra_css %}{% endblock %}
@@ -111,8 +112,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-calendar-alt me-2"></i>会议室预约
+                        <a class="nav-link" href="{% url 'bookings:reservation_create' %}">
+                            <i class="fas fa-plus-circle me-2"></i>新建预约
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bookings:reservation_list' %}">
+                            <i class="fas fa-list me-2"></i>我的预约
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bookings:meeting_room_list' %}">
+                            <i class="fas fa-door-open me-2"></i>会议室列表
                         </a>
                     </li>
                     {% if user.profile.is_company_admin %}

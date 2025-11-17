@@ -294,6 +294,11 @@ class ReservationCreateView(CreateView):
     form_class = ReservationForm
     template_name = 'bookings/reservation_form.html'
 
+    def get_success_url(self):
+        """成功后返回预约列表"""
+        messages.success(self.request, '预约创建成功！')
+        return reverse_lazy('bookings:reservation_list')
+
     def dispatch(self, request, *args, **kwargs):
         """检查用户是否有权限创建预约"""
         # 所有登录用户都可以创建预约
@@ -306,11 +311,6 @@ class ReservationCreateView(CreateView):
         kwargs['company'] = user_profile.company
         kwargs['user'] = self.request.user
         return kwargs
-
-    def get_success_url(self):
-        """成功后返回预约列表"""
-        messages.success(self.request, '预约创建成功！')
-        return reverse_lazy('bookings:reservation_list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

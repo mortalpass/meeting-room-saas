@@ -24,23 +24,9 @@ from apps.companies.models import Company
 def register(request):
     """用户注册视图"""
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-
-            # 手动创建用户资料
-            company = Company.objects.first()
-            if not company:
-                company = Company.objects.create(
-                    name=f"{user.username}的公司",
-                    admin=user
-                )
-
-            UserProfile.objects.create(
-                user=user,
-                company=company,
-                role='user'
-            )
+            user = form.save()  # 这里会创建User和UserProfile
 
             # 自动登录
             username = form.cleaned_data.get('username')
@@ -50,7 +36,7 @@ def register(request):
 
             return redirect('dashboard')
     else:
-        form = UserCreationForm()
+        form = UserRegistrationForm()
 
     return render(request, 'accounts/register.html', {'form': form})
 

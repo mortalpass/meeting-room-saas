@@ -73,20 +73,21 @@ class UserProfile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-    """创建用户时自动创建用户资料"""
+    """创建用户时自动创建用户资料 - 适用于所有用户创建方式"""
     if created:
-        # 检查是否已经存在 profile
-        if not hasattr(instance, 'profile') and not UserProfile.objects.filter(user=instance).exists():
-            # 获取或创建公司
-            company = Company.objects.first()
-            if not company:
-                company = Company.objects.create(
-                    name=f"{instance.username}的公司",
-                    admin=instance
-                )
-
-            # 创建用户资料
-            UserProfile.objects.create(user=instance, company=company)
+        # 使用 get_or_create 避免重复创建
+        profile, created_profile = UserProfile.objects.get_or_create(
+            user=instance,
+            defaults={
+                'company': Company.objects.first() or Company.objects.create(
+                    name=f"{instance.username}的公司" if not instance.is_superuser else "系统管理公司",
+                    admin=instance if instance.is_superuser else None
+                ),
+                'role': 'admin' if instance.is_superuser else 'user'
+            }
+        )
+        if created_profile:
+            print(f"自动为 {instance.username} 创建了 UserProfile")
 
 
 @receiver(post_save, sender=User)

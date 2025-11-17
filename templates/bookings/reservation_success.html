@@ -1,0 +1,57 @@
+<!-- templates/bookings/reservation_success.html -->
+{% extends 'base.html' %}
+
+{% block title %}预约成功 - 会议室预约系统{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-body py-5">
+                    <div class="mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h2 class="card-title mb-3">预约提交成功！</h2>
+                    <p class="card-text text-muted mb-4">
+                        您的预约已成功提交，{% if reservation.status == 'pending' %}等待管理员审核{% else %}已自动确认{% endif %}。
+                    </p>
+
+                    <div class="row text-start mb-4">
+                        <div class="col-12">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="card-title">预约详情</h6>
+                                    <p><strong>会议主题：</strong>{{ reservation.title }}</p>
+                                    <p><strong>会议室：</strong>{{ reservation.meeting_room.name }}</p>
+                                    <p><strong>时间：</strong>{{ reservation.start_time|date:"Y-m-d H:i" }} - {{ reservation.end_time|date:"Y-m-d H:i" }}</p>
+                                    <p><strong>状态：</strong>
+                                        <span class="badge
+                                            {% if reservation.status == 'confirmed' %}bg-success
+                                            {% elif reservation.status == 'pending' %}bg-warning
+                                            {% else %}bg-secondary{% endif %}">
+                                            {{ reservation.get_status_display }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="{% url 'bookings:reservation_list' %}" class="btn btn-primary">
+                            <i class="fas fa-list me-1"></i>查看我的预约
+                        </a>
+                        <a href="{% url 'bookings:reservation_create' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-plus me-1"></i>继续新建预约
+                        </a>
+                        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-home me-1"></i>返回首页
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

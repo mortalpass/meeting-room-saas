@@ -58,7 +58,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # 自定义中间件
-    'apps.common.middleware.CompanyMiddleware',
+    # 'apps.common.middleware.CompanyMiddleware',
+    'apps.common.middleware.UserProfileMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
